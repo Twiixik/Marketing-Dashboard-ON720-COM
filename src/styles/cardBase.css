@@ -1,0 +1,115 @@
+.card {
+    background-color: var(--primary-light);
+    border-radius: 12px;
+    border: 1px solid var(--black-10);
+    padding: 1.5rem;
+    box-sizing: border-box;
+    min-width: 0;
+    height: auto;
+}
+
+.card-title {
+    font-size: 28px;
+    font-weight: bold;
+    font-family: var(--font-heading);
+    margin: 0;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.chart-subtitle {
+    text-align: center;
+    color: var(--black-40);
+    font-size: 16px;
+    margin-bottom: 0.5rem;
+}
+
+.custom-tooltip {
+    background-color: var(--white-100);
+    border: 1px solid var(--black-10);
+    padding: 0.5rem 1rem;
+    font-size: 14px;
+    border-radius: 6px;
+    color: var(--black-100);
+}
+/* CPC and CTR should span 2 columns */
+.card-wide {
+    grid-column: span 2;
+    height: 326px;
+}
+
+/* Conversions takes 1 column */
+.card.conversions-card {
+    grid-row: span 2;
+    display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+}
+
+/* Styling for the CTR Card */
+
+.ctr-bars {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-top: 3.3rem;
+}
+
+.ctr-row {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    margin-bottom: 1rem;
+}
+
+.ctr-label {
+    font-size: 16px;
+    color: var(--black-100);
+    white-space: nowrap;
+    width: 110px;
+    font-family: var(--font-body);
+    font-weight: 600;
+}
+
+.ctr-bar-wrapper {
+    width: 100%;
+    flex-grow: 1;
+    height: 16px;
+    background-color: var(--black-10);
+    border-radius: 4px;
+    overflow: hidden;
+    align-items: center;
+}
+
+.ctr-bar {
+    height: 100%;
+    border-radius: 4px;
+}
+
+@media (max-height: 900px) {
+
+    .card,
+    .card-wide,
+    .conversions-card {
+        height: auto;
+        min-height: 250px;
+    }
+
+    .donut-wrapper {
+        width: 140px;
+        height: 140px;
+    }
+
+    .donut-center strong {
+        font-size: 20px;
+    }
+
+    .legend-item {
+        font-size: 14px;
+    }
+}

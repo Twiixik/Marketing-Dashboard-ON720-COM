@@ -1,2 +1,2 @@
-# Marketing-Dashboard-ON720-COM
-Thesis
+# dashboard-on720.com
+ Thesis Timotej Piontek x ON720.COM

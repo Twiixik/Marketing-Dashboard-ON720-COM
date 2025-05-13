@@ -1,0 +1,120 @@
+
+/* EXPORT MODAL FOR SIDE BAR */ 
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.export-modal {
+    background: white;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    font-family: var(--font-body);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    font-size: 28px;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--black-100);
+    margin-top: 1rem;
+}
+
+.file-format-options {
+    display: flex;
+    gap: 1rem;
+}
+
+.modal-section {
+    margin-bottom: 1.5rem;
+}
+
+.modal-section strong {
+    display: block;
+    font-size: 20px;
+    margin-bottom: 0.5rem;
+}
+
+.modal-section label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 16px;
+}
+
+.modal-section input[type="text"] {
+    width: 100%;
+    max-width: 474px;
+    padding: 0.75rem 0.7rem;
+    border: 1px solid var(--black-10);
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.export-btn {
+    background-color: var(--primary-brand);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.export-btn:hover {
+    background-color: #8cbfff;
+}
+
+.cancel-btn {
+    background-color: white;
+    color: var(--chart-red);
+    border: 1px solid var(--black-5);
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.cancel-btn:hover {
+    background-color: var(--chart-red);
+    color: white;
+    border: 1px solid var(--chart-red);
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* === Export modal for open card === */
+
+.export-modal h3 {
+    font-size: 22px;
+}
+
+.modal-section ul {
+    padding-left: 1rem;
+    list-style-type: disc; }

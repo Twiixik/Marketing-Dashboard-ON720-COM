@@ -1,0 +1,38 @@
+:root {
+    /* Fonts */
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Colors */
+    --black-100: #000000;
+    --black-80: #4d4d4d;
+    --black-40: #999999;
+    --black-20: #cccccc;
+    --black-10: #e6e6e6;
+    --black-5: #f2f2f2;
+
+    --white-100: #ffffff;
+    --white-80: rgba(255, 255, 255, 0.8);
+    --white-40: rgba(255, 255, 255, 0.4);
+    --white-20: rgba(255, 255, 255, 0.2);
+    --white-10: rgba(255, 255, 255, 0.1);
+    --white-5: rgba(255, 255, 255, 0.05);
+
+    --primary-light: #F7F9FB;
+    --primary-blue: #E3F5FF;
+    --primary-grey-blue: #E5ECF6;
+    --primary-grey-blue-50: rgba(229, 236, 246, 0.5);
+    --primary-brand: #0377FF;
+
+    --chart-purple-a: #95A4FC;
+    --chart-purple-b: #C6C7F8;
+    --chart-blue-a: #A8C5DA;
+    --chart-blue-b: #B1E3FF;
+    --chart-green-a: #A1E3CB;
+    --chart-green-b: #BAEDBD;
+
+    --chart-yellow-a: #FFE899;
+    --chart-yellow-b: #E0CA7B;
+    --chart-red: #E40048;
+    --chart-green-c: #00E49C;
+}

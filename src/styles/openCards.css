@@ -1,0 +1,259 @@
+/* Shared Layout for Open Cards */ 
+
+.card-container {
+    background-color: var(--primary-light);
+    border-radius: 12px;
+    border: 1px solid var(--black-10);
+    padding: 2rem;
+    width: 100%;
+    max-width: 95%;
+    margin: 2rem auto;
+    box-sizing: border-box;
+}
+
+.open-card-title {
+    font-size: 28px;
+    font-weight: 600;
+    font-family: var(--font-heading);
+    margin: 0;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.back-btn,
+.info-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.detail-total {
+    font-size: 40px;
+    font-family: var(--font-heading);
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+
+/* Shared Filter Dropdowns */
+
+.filters-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.filters-row select {
+    padding: 1rem 1rem;
+    height: 60px;
+    width: 100%;
+    max-width: 180px;
+    border-radius: 8px;
+    border: 1px solid var(--black-10);
+    font-family: var(--font-body);
+    font-size: 16px;
+    background-color: var(--white-100);
+    color: var(--black-100);
+}
+
+.open-dropdown-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 180px;
+    flex: 1;
+}
+
+.open-dropdown-wrapper select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 2.5rem;
+}
+
+.dropdown-icon {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--black-100);
+}
+
+/* Shared Inner Boxes */ 
+
+.card-inner-box {
+    padding: 1.5rem;
+    background-color: var(--white-100);
+    border-radius: 8px;
+    border: 1px solid var(--black-10);
+    margin-bottom: 1rem
+}
+
+/* Buttons (Cancel & Export) */ 
+
+.button-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.cancel-btn {
+    background: var(--white-100);
+    font-size: 16px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    color: var(--chart-red);
+    border: 1px solid var(--black-10);
+    padding: 0.75rem 1.50rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.cancel-btn:hover {
+    background-color: var(--chart-red);
+    color: var(--white-100);
+    border: 1px solid var(--chart-red);
+}
+
+.export-btn {
+    background-color: var(--primary-brand);
+    font-size: 16px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.50rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.export-btn:hover {
+    background-color: #8cbfff;
+}
+
+/* Table Styles (Shared) */ 
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-body);
+}
+
+th,
+td {
+    background-color: var(--white-100);
+    border: 1px solid var(--black-10);
+    padding: 0.75rem;
+    text-align: left;
+}
+
+th {
+    background-color: var(--white-100);
+}
+
+/* === Website Traffic Page Specific === */
+.double-metric-boxes {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.metric-box {
+    flex: 1;
+    padding: 1rem;
+    background-color: var(--white-100);
+    border: 1px solid var(--black-10);
+    border-radius: 8px;
+    text-align: center;
+    font-size: 20px;
+    font-family: var(--font-body);
+}
+
+.metric-box p {
+    font-size: 28px;
+    font-family: var(--font-heading);
+    color: var(--black-100);
+    font-weight: bold;
+    margin: 0;
+}
+
+.centered-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+    font-family: var(--font-heading);
+    margin: 0;
+    margin-bottom: 1.5rem;
+}
+
+.double-chart-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.double-chart-boxes .card-inner-box {
+    flex: 1;
+    min-width: 300px;
+}
+
+.double-table-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.double-table-boxes table {
+    flex: 1;
+    min-width: 300px;
+    border-radius: 8px;
+}
+
+.double-table-boxes td {
+    background-color: var(--white-100);
+    font-size: 20px;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    color: var(--black-100);
+}
+
+.chart-container h3 {
+    align-items: center;
+}
+
+/* Tool tip styles */
+
+.info-wrapper {
+    position: relative;
+    display: inline-block; 
+    cursor: pointer;
+}
+
+.info-tooltip {
+  position: absolute;
+  top: -0.5rem;
+  right: 2.5rem;
+  width: 600px;
+  background: var(--white-100);
+  border: 1px solid var(--black-10);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.4;
+  z-index: 999;
+  font-family: var(--font-body);
+}
