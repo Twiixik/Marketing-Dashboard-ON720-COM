@@ -5,11 +5,11 @@ import react from "@vitejs/plugin-react-swc"; // or "@vitejs/plugin-react" if yo
 export default defineConfig(({ command }) => {
   const config = {
     plugins: [react()],
-    base: "/", 
+    base: "/", // Local dev
   };
 
   if (command !== "serve") {
-    config.base = "/dashboard-on720.com/"; 
+    config.base = "/Marketing-Dashboard-ON720-COM/"; 
   }
 
   return config;
