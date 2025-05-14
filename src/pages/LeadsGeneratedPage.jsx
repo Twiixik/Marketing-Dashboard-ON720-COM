@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ExportModalOpenCard from '../components/ExportModalOpenCard';
 import {
@@ -9,32 +9,6 @@ import { ChevronLeft, ChevronDown, Info } from 'react-feather';
 import '../styles/cardBase.css';
 import '../styles/openCards.css';
 
-const barData = [
-  { platform: 'LinkedIn', organic: 150, paid: 100 },
-  { platform: 'Google', organic: 110, paid: 60 },
-  { platform: 'AppSource', organic: 70, paid: 40 },
-];
-
-const pieData = [
-  { name: 'Contact', value: 120 },
-  { name: 'Book a Demo', value: 100 },
-  { name: 'Webinar', value: 90 },
-  { name: 'Trial', value: 80 },
-];
-
-const tableData = [
-  { campaign: 'Spring 2024', type: 'Webinar', leads: 18, conversion: '4.8%' },
-  { campaign: 'App Promo Week', type: 'Book a Demo', leads: 14, conversion: '3.7%' },
-  { campaign: 'Product Launch', type: 'Contact', leads: 9, conversion: '2.8%' }
-];
-
-const COLORS = [
-  'var(--chart-yellow-b)',
-  'var(--chart-purple-a)',
-  'var(--chart-green-b)',
-  'var(--chart-blue-a)',
-];
-
 const PIECOLORS = [
   'var(--chart-purple-a)',
   'var(--chart-yellow-a)',
@@ -42,34 +16,60 @@ const PIECOLORS = [
   'var(--chart-purple-b)',
 ];
 
-// TOOLTIP with % OUT OF 100
-const totalLeads = pieData.reduce((sum, item) => sum + item.value, 0);
-const CustomPieTooltip = ({ active, payload }) => {
-  if (active && payload && payload.length) {
-    const { name, value } = payload[0];
-    const percent = ((value / totalLeads) * 100).toFixed(1);
-    return (
-      <div style={{
-        background: 'white',
-        padding: '0.5rem 1rem',
-        borderRadius: '8px',
-        border: '1px solid var(--black-10)',
-        fontFamily: 'var(--font-body)',
-        fontSize: '14px'
-      }}>
-        <strong>{name}</strong><br />
-        {value} leads ({percent}%)
-      </div>
-    );
-  }
-  return null;
-};
-
 const LeadsGeneratedPage = () => {
   const navigate = useNavigate();
   const [isExportOpen, setIsExportOpen] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
-  
+  const [selectedRange, setSelectedRange] = useState('Last 7 Days');
+
+  const [barData, setBarData] = useState([]);
+  const [pieData, setPieData] = useState([]);
+  const [tableData, setTableData] = useState([]);
+  const [summary, setSummary] = useState({
+    topChannel: { name: '', leads: 0 },
+    topCampaign: { name: '', leads: 0 },
+    totalLeads: 0
+  });
+
+  useEffect(() => {
+    fetch(`https://marketing-dashboard-on720com-default-rtdb.europe-west1.firebasedatabase.app/leadsGenerated/${selectedRange}.json`)
+      .then(res => res.json())
+      .then(data => {
+        if (data) {
+          setBarData(data.barData || []);
+          setPieData(data.pieData || []);
+          setTableData(data.tableData || []);
+          setSummary({
+            topChannel: data.topChannel || { name: '', leads: 0 },
+            topCampaign: data.topCampaign || { name: '', leads: 0 },
+            totalLeads: data.totalLeads || 0
+          });
+        }
+      });
+  }, [selectedRange]);
+
+  const totalLeadsFromPie = pieData.reduce((sum, item) => sum + item.value, 0);
+
+  const CustomPieTooltip = ({ active, payload }) => {
+    if (active && payload && payload.length) {
+      const { name, value } = payload[0];
+      const percent = ((value / totalLeadsFromPie) * 100).toFixed(1);
+      return (
+        <div style={{
+          background: 'white',
+          padding: '0.5rem 1rem',
+          borderRadius: '8px',
+          border: '1px solid var(--black-10)',
+          fontFamily: 'var(--font-body)',
+          fontSize: '14px'
+        }}>
+          <strong>{name}</strong><br />
+          {value} leads ({percent}%)
+        </div>
+      );
+    }
+    return null;
+  };
 
   return (
     <div className="card-container">
@@ -81,27 +81,26 @@ const LeadsGeneratedPage = () => {
           </button>
           <h2 className="open-card-title">Leads Generated</h2>
         </div>
-        {/* Info Button with Hover Tooltip */}
-                <div className="info-wrapper"
-                  onMouseEnter={() => setShowInfo(true)}
-                  onMouseLeave={() => setShowInfo(false)}
-                >
-                  <button className="info-btn"><Info size={40} /></button>
-                  {showInfo && (
-                    <div className="info-tooltip">
-                      Leads are users who filled out a form (e.g., Book Demo, Webinar Signup). 
-                      These are counted when form submissions are completed successfully.
-                    </div>
-                  )}
-                  </div>
-              </div>
+        <div className="info-wrapper"
+          onMouseEnter={() => setShowInfo(true)}
+          onMouseLeave={() => setShowInfo(false)}
+        >
+          <button className="info-btn"><Info size={40} /></button>
+          {showInfo && (
+            <div className="info-tooltip">
+              Leads are users who filled out a form (e.g., Book Demo, Webinar Signup). 
+              These are counted when form submissions are completed successfully.
+            </div>
+          )}
+        </div>
+      </div>
 
-      <div className="detail-total">356</div>
+      <div className="detail-total">{summary.totalLeads.toLocaleString()}</div>
 
       {/* Filters */}
       <div className="filters-row">
         <div className="open-dropdown-wrapper">
-          <select>
+          <select value={selectedRange} onChange={(e) => setSelectedRange(e.target.value)}>
             <option>Last 7 Days</option>
             <option>Last 30 Days</option>
             <option>Last 90 Days</option>
@@ -140,14 +139,14 @@ const LeadsGeneratedPage = () => {
       <div className="double-metric-boxes">
         <div className="metric-box">
           <h4>Top Channel</h4>
-          <div style={{ display: 'flex', justifyContent: 'space-between', fontFamily: 'var(--font-heading)', fontSize: '28px' }}>
-            <strong>Google ADS</strong><span>148 Leads</span>
+          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '28px' }}>
+            <strong>{summary.topChannel.name}</strong><span>{summary.topChannel.leads} Leads</span>
           </div>
         </div>
         <div className="metric-box">
           <h4>Top Campaign</h4>
-          <div style={{ display: 'flex', justifyContent: 'space-between', fontFamily: 'var(--font-heading)', fontSize: '28px' }}>
-            <strong>Spring 2024</strong><span>18 Leads</span>
+          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '28px' }}>
+            <strong>{summary.topCampaign.name}</strong><span>{summary.topCampaign.leads} Leads</span>
           </div>
         </div>
       </div>
@@ -245,7 +244,7 @@ const LeadsGeneratedPage = () => {
           onClose={() => setIsExportOpen(false)}
           title="Leads Generated"
           filters={[
-            "Time Range: Last 7 Days",
+            `Time Range: ${selectedRange}`,
             "Platforms: Google, LinkedIn, AppSource",
             "Channel: Organic, Paid"
           ]}

@@ -1,15 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer
 } from 'recharts';
 import '../styles/cardBase.css';
 import { useNavigate } from 'react-router-dom';
-
-const data = [
-  { platform: 'LinkedIn', cpc: 3.2 },
-  { platform: 'AppSource', cpc: 2.4 },
-  { platform: 'Google', cpc: 3.1 },
-];
 
 const COLORS = {
   LinkedIn: 'var(--chart-blue-b)',
@@ -24,16 +18,28 @@ const CustomBar = (props) => {
 
 const CostPerClickCard = () => {
   const navigate = useNavigate();
+  const [chartData, setChartData] = useState([]);
+
+  useEffect(() => {
+    fetch('https://marketing-dashboard-on720com-default-rtdb.europe-west1.firebasedatabase.app/cpc/Last 7 Days/barData.json')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data) {
+          setChartData(data);
+        }
+      });
+  }, []);
+
   return (
     <div className="card card-wide" onClick={() => navigate('/cost-per-click')} style={{ cursor: 'pointer' }}>
       <h2 className="card-title">Cost Per Click (CPC)</h2>
-      <ResponsiveContainer width="100%" height={200}>   
-        <BarChart data={data}>
+      <ResponsiveContainer width="100%" height={200}>
+        <BarChart data={chartData}>
           <XAxis dataKey="platform" />
           <YAxis tick={false} axisLine={false} />
           <Tooltip />
           <Bar
-            dataKey="cpc"
+            dataKey="cost"
             shape={(props) => (
               <CustomBar {...props} fill={COLORS[props.payload.platform]} />
             )}

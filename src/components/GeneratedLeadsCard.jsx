@@ -1,17 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   PieChart, Pie, Cell, Tooltip, ResponsiveContainer
 } from 'recharts';
 import '../styles/cardBase.css';
 import { useNavigate } from 'react-router-dom';
-
-
-const data = [
-  { name: 'Contact', value: 35 },
-  { name: 'Book a Demo', value: 25 },
-  { name: 'Webinar', value: 22 },
-  { name: 'Trial', value: 18 },
-];
 
 const COLORS = [
   'var(--chart-purple-a)',
@@ -28,7 +20,7 @@ const CustomTooltip = ({ active, payload }) => {
         <span style={{ display: 'inline-block', marginRight: '6px', fontSize: '14px' }}>
           ●
         </span>
-        {value}% {name}
+        {value} Leads – {name}
       </div>
     );
   }
@@ -37,13 +29,23 @@ const CustomTooltip = ({ active, payload }) => {
 
 const GeneratedLeadsCard = () => {
   const navigate = useNavigate();
+  const [pieData, setPieData] = useState([]);
+
+  useEffect(() => {
+    fetch('https://marketing-dashboard-on720com-default-rtdb.europe-west1.firebasedatabase.app/leadsGenerated/Last 7 Days/pieData.json')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data) setPieData(data);
+      });
+  }, []);
+
   return (
     <div className="card" onClick={() => navigate('/leads-generated')} style={{ cursor: 'pointer' }}>
       <h2 className="card-title">Generated Leads</h2>
       <ResponsiveContainer width="100%" height={200}>
         <PieChart>
           <Pie
-            data={data}
+            data={pieData}
             cx="50%"
             cy="50%"
             outerRadius={75}
@@ -51,7 +53,7 @@ const GeneratedLeadsCard = () => {
             dataKey="value"
             stroke="none"
           >
-            {data.map((entry, index) => (
+            {pieData.map((entry, index) => (
               <Cell key={index} fill={COLORS[index % COLORS.length]} />
             ))}
           </Pie>

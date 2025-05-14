@@ -1,7 +1,6 @@
-import React from 'react';
-import { useState } from 'react';
-import ExportModalOpenCard from '../components/ExportModalOpenCard';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ExportModalOpenCard from '../components/ExportModalOpenCard';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Cell, ResponsiveContainer
 } from 'recharts';
@@ -9,25 +8,31 @@ import { ChevronLeft, ChevronDown, Info } from 'react-feather';
 import '../styles/cardBase.css';
 import '../styles/openCards.css';
 
-const barData = [
-  { platform: 'LinkedIn', cost: 18 },
-  { platform: 'Google', cost: 14 },
-  { platform: 'AppSource', cost: 7 },
-];
-
-const tableData = [
-  { campaign: 'Spring 2024', platform: 'LinkedIn Ads', cpc: '18kr', spend: '300kr', click: '4.8%' },
-  { campaign: 'App Promo Week', platform: 'Google Ads', cpc: '14kr', spend: '280kr', click: '3.7%' },
-  { campaign: 'Product Launch', platform: 'Bing Ads', cpc: '9kr', spend: '110kr', click: '2.8%' }
-];
-
 const COLORS = ['var(--chart-blue-b)', 'var(--chart-yellow-a)', 'var(--chart-green-b)'];
-
 
 const CostPerClickPage = () => {
   const navigate = useNavigate();
   const [isExportOpen, setIsExportOpen] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
+  const [selectedRange, setSelectedRange] = useState('Last 7 Days');
+
+  const [barData, setBarData] = useState([]);
+  const [tableData, setTableData] = useState([]);
+  const [totalCPC, setTotalCPC] = useState('');
+  const [totalSpend, setTotalSpend] = useState('');
+
+  useEffect(() => {
+    fetch(`https://marketing-dashboard-on720com-default-rtdb.europe-west1.firebasedatabase.app/cpc/${selectedRange}.json`)
+      .then(res => res.json())
+      .then(data => {
+        if (data) {
+          setBarData(data.barData || []);
+          setTableData(data.tableData || []);
+          setTotalCPC(data.totalCPC || '');
+          setTotalSpend(data.totalSpend || '');
+        }
+      });
+  }, [selectedRange]);
 
   return (
     <div className="card-container">
@@ -39,59 +44,59 @@ const CostPerClickPage = () => {
           </button>
           <h2 className="open-card-title">Cost Per Click</h2>
         </div>
-        {/* Info Button with Hover Tooltip */}
-                <div className="info-wrapper"
-                  onMouseEnter={() => setShowInfo(true)}
-                  onMouseLeave={() => setShowInfo(false)}
-                >
-                  <button className="info-btn"><Info size={40} /></button>
-                  {showInfo && (
-                    <div className="info-tooltip">
-                      CPC shows the average cost paid per ad click. 
-                      It’s calculated by dividing total ad spend by the number of clicks received.
-                    </div>
-                  )}
-                  </div>
-              </div>
+        <div
+          className="info-wrapper"
+          onMouseEnter={() => setShowInfo(true)}
+          onMouseLeave={() => setShowInfo(false)}
+        >
+          <button className="info-btn"><Info size={40} /></button>
+          {showInfo && (
+            <div className="info-tooltip">
+              CPC shows the average cost paid per ad click. 
+              It’s calculated by dividing total ad spend by the number of clicks received.
+            </div>
+          )}
+        </div>
+      </div>
 
       {/* Total Value */}
-      <div className="detail-total">Kr<span>14,50</span></div>
+      <div className="detail-total">Kr<span>{totalCPC}</span></div>
 
       {/* Filters */}
       <div className="filters-row">
         <div className="open-dropdown-wrapper">
-            <select>
-                <option>Last 7 Days</option>
-                <option>Last 30 Days</option>
-                <option>Last 90 Days</option>
-            </select>
-            <ChevronDown className="dropdown-icon" size={20} />
+          <select value={selectedRange} onChange={(e) => setSelectedRange(e.target.value)}>
+            <option>Last 7 Days</option>
+            <option>Last 30 Days</option>
+            <option>Last 90 Days</option>
+          </select>
+          <ChevronDown className="dropdown-icon" size={20} />
         </div>
 
         <div className="open-dropdown-wrapper">
-        <select>
+          <select>
             <option>All Platforms</option>
             <option>LinkedIn</option>
             <option>Google</option>
             <option>AppSource</option>
-        </select>
-        <ChevronDown className="dropdown-icon" size={20} />
+          </select>
+          <ChevronDown className="dropdown-icon" size={20} />
         </div>
 
         <div className="open-dropdown-wrapper">
-        <select>
+          <select>
             <option>Organic and Paid</option>
             <option>Organic</option>
             <option>Paid</option>
-        </select>
-        <ChevronDown className="dropdown-icon" size={20} />
+          </select>
+          <ChevronDown className="dropdown-icon" size={20} />
         </div>
 
         <div className="open-dropdown-wrapper">
-        <select>
+          <select>
             <option>Choose</option>
-        </select>
-        <ChevronDown className="dropdown-icon" size={20} />
+          </select>
+          <ChevronDown className="dropdown-icon" size={20} />
         </div>
       </div>
 
@@ -100,8 +105,8 @@ const CostPerClickPage = () => {
         <div className="card-header">
           <h3>Average CPC by Platform</h3>
           <div>
-            <strong>Total Spend: 557kr</strong><br />
-            <small>Last 7 days</small>
+            <strong>Total Spend: {totalSpend}</strong><br />
+            <small>{selectedRange}</small>
           </div>
         </div>
         <ResponsiveContainer width="100%" height={250}>
@@ -153,23 +158,24 @@ const CostPerClickPage = () => {
         <button className="cancel-btn" onClick={() => navigate(-1)}>Cancel</button>
         <button className="export-btn" onClick={() => setIsExportOpen(true)}>Export</button>
       </div>
+
       {/* Export Modal */}
       {isExportOpen && (
-  <ExportModalOpenCard
-    onClose={() => setIsExportOpen(false)}
-    title="Cost Per Click"
-    filters={[
-      "Time Range: Last 7 Days",
-      "Platforms: Google, LinkedIn, AppSource",
-      "Channel: Organic, Paid"
-    ]}
-    included={[
-      "Average CPC by Platform",
-      "Total Spend",
-      "Breakdown by Campaign",
-    ]}
-  />
-)}
+        <ExportModalOpenCard
+          onClose={() => setIsExportOpen(false)}
+          title="Cost Per Click"
+          filters={[
+            `Time Range: ${selectedRange}`,
+            "Platforms: Google, LinkedIn, AppSource",
+            "Channel: Organic, Paid"
+          ]}
+          included={[
+            "Average CPC by Platform",
+            "Total Spend",
+            "Breakdown by Campaign",
+          ]}
+        />
+      )}
     </div>
   );
 };

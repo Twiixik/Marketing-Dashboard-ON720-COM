@@ -1,23 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer
 } from 'recharts';
 import '../styles/cardBase.css';
 import { useNavigate } from 'react-router-dom';
 
-
-const data = [
-  { day: 'Mon', visits: 20 },
-  { day: 'Tue', visits: 12 },
-  { day: 'Wed', visits: 58 },
-  { day: 'Thu', visits: 38 },
-  { day: 'Fri', visits: 90 },
-  { day: 'Sat', visits: 60 },
-  { day: 'Sun', visits: 18 },
-];
-
 const WebsiteTrafficCard = () => {
   const navigate = useNavigate();
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch('https://marketing-dashboard-on720com-default-rtdb.europe-west1.firebasedatabase.app/websiteTraffic/Last 7 Days/visitsData.json')
+      .then((res) => res.json())
+      .then((fetched) => {
+        if (Array.isArray(fetched)) {
+          setData(fetched);
+        }
+      });
+  }, []);
+
   return (
     <div className="card" onClick={() => navigate('/website-traffic')} style={{ cursor: 'pointer' }}>
       <h2 className="card-title">Web Traffic</h2>
@@ -27,10 +28,10 @@ const WebsiteTrafficCard = () => {
           margin={{ top: 20, right: 10, left: 0, bottom: 0 }}
         >
           <XAxis
-            dataKey="day"     
-            tick={false}         
-            axisLine={true}      
-            tickLine={false}     
+            dataKey="day"
+            tick={false}
+            axisLine={true}
+            tickLine={false}
           />
           <YAxis
             tick={{ fontSize: 12 }}
