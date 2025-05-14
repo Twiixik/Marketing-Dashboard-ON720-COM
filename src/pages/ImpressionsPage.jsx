@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Cell, ResponsiveContainer
@@ -8,22 +8,29 @@ import ExportModalOpenCard from '../components/ExportModalOpenCard';
 import '../styles/cardBase.css';
 import '../styles/openCards.css';
 
-const barData = [
-  { platform: 'LinkedIn', organic: 60000, paid: 30000 },
-  { platform: 'Google', organic: 30000, paid: 15000 },
-  { platform: 'AppSource', organic: 25000, paid: 18000 },
-];
-
-const tableData = [
-  { campaign: 'Spring 2024', platform: 'LinkedIn', impressions: '18,000', timerange: 'Last 7 Days' },
-  { campaign: 'App Promo Week', platform: 'Google Ads', impressions: '10,000', timerange: 'Last 7 Days' },
-  { campaign: 'Product Launch', platform: 'Bing Ads', impressions: '8,000', timerange: 'Last 7 Days' },
-];
-
 const ImpressionsDetail = () => {
   const navigate = useNavigate();
   const [isExportOpen, setIsExportOpen] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
+
+  const [selectedRange, setSelectedRange] = useState("Last 7 Days");
+
+  const [barData, setBarData] = useState([]);
+  const [tableData, setTableData] = useState([]);
+  const [totalImpressions, setTotalImpressions] = useState(0);
+
+  useEffect(() => {
+    fetch(`https://marketing-dashboard-on720com-default-rtdb.europe-west1.firebasedatabase.app/impressions/${selectedRange}.json`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data) {
+          setBarData(data.platformData || []);
+          setTableData(data.campaignData || []);
+          const total = (data.platformData || []).reduce((sum, p) => sum + p.organic + p.paid, 0);
+          setTotalImpressions(total);
+        }
+      });
+  }, [selectedRange]); // 👈 re-run when selectedRange changes
 
   return (
     <div className="card-container">
@@ -35,7 +42,6 @@ const ImpressionsDetail = () => {
           </button>
           <h2 className="open-card-title">Impressions</h2>
         </div>
-        {/* Info Button with Hover Tooltip */}
         <div className="info-wrapper"
           onMouseEnter={() => setShowInfo(true)}
           onMouseLeave={() => setShowInfo(false)}
@@ -47,46 +53,46 @@ const ImpressionsDetail = () => {
               This includes both paid and organic views.
             </div>
           )}
-          </div>
+        </div>
       </div>
 
-      <div className="detail-total">328,441</div>
+      <div className="detail-total">{totalImpressions.toLocaleString()}</div>
 
       {/* Filters */}
       <div className="filters-row">
         <div className="open-dropdown-wrapper">
-            <select>
-                <option>Last 7 Days</option>
-                <option>Last 30 Days</option>
-                <option>Last 90 Days</option>
-            </select>
-            <ChevronDown className="dropdown-icon" size={20} />
+          <select value={selectedRange} onChange={(e) => setSelectedRange(e.target.value)}>
+            <option>Last 7 Days</option>
+            <option>Last 30 Days</option>
+            <option>Last 90 Days</option>
+          </select>
+          <ChevronDown className="dropdown-icon" size={20} />
         </div>
 
         <div className="open-dropdown-wrapper">
-        <select>
+          <select>
             <option>All Platforms</option>
             <option>LinkedIn</option>
             <option>Google</option>
             <option>AppSource</option>
-        </select>
-        <ChevronDown className="dropdown-icon" size={20} />
+          </select>
+          <ChevronDown className="dropdown-icon" size={20} />
         </div>
 
         <div className="open-dropdown-wrapper">
-        <select>
+          <select>
             <option>Organic and Paid</option>
             <option>Organic</option>
             <option>Paid</option>
-        </select>
-        <ChevronDown className="dropdown-icon" size={20} />
+          </select>
+          <ChevronDown className="dropdown-icon" size={20} />
         </div>
 
         <div className="open-dropdown-wrapper">
-        <select>
+          <select>
             <option>Choose</option>
-        </select>
-        <ChevronDown className="dropdown-icon" size={20} />
+          </select>
+          <ChevronDown className="dropdown-icon" size={20} />
         </div>
       </div>
 
@@ -102,8 +108,7 @@ const ImpressionsDetail = () => {
               <Tooltip />
               <Bar dataKey="organic">
                 {barData.map((entry, index) => (
-                  <Cell
-                    key={`organic-${index}`}
+                  <Cell key={`organic-${index}`}
                     fill={
                       entry.platform === 'LinkedIn' ? 'var(--chart-blue-b)' :
                       entry.platform === 'Google' ? 'var(--chart-yellow-a)' :
@@ -114,8 +119,7 @@ const ImpressionsDetail = () => {
               </Bar>
               <Bar dataKey="paid">
                 {barData.map((entry, index) => (
-                  <Cell
-                    key={`paid-${index}`}
+                  <Cell key={`paid-${index}`}
                     fill={
                       entry.platform === 'LinkedIn' ? 'var(--chart-blue-a)' :
                       entry.platform === 'Google' ? 'var(--chart-yellow-b)' :
@@ -166,7 +170,7 @@ const ImpressionsDetail = () => {
           onClose={() => setIsExportOpen(false)}
           title="Impressions"
           filters={[
-            "Time Range: Last 7 Days",
+            `Time Range: ${selectedRange}`,
             "Platforms: Google, LinkedIn, AppSource",
             "Campaigns: All",
             "Channel: Organic, Paid"

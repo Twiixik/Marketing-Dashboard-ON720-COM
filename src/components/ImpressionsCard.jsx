@@ -1,30 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   BarChart, Bar, XAxis, Tooltip, ResponsiveContainer, Cell
 } from 'recharts';
 import '../styles/cardBase.css';
 import { useNavigate } from 'react-router-dom';
 
-
-const data = [
-  {
-    name: 'LinkedIn',
-    organic: 9200,
-    paid: 1234,
-  },
-  {
-    name: 'AppSource',
-    organic: 5000,
-    paid: 1258,
-  },
-  {
-    name: 'Google',
-    organic: 8000,
-    paid: 1234,
-  }
-];
-
-// Color map using your CSS variables
 const colorMap = {
   LinkedIn: 'var(--chart-blue-b)',
   AppSource: 'var(--chart-green-b)',
@@ -48,17 +28,29 @@ const CustomTooltip = ({ active, payload, label }) => {
 };
 
 const ImpressionsCard = () => {
-   const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch('https://marketing-dashboard-on720com-default-rtdb.europe-west1.firebasedatabase.app/impressions/Last 7 Days/platformData.json')
+      .then((res) => res.json())
+      .then((fetchedData) => {
+        if (Array.isArray(fetchedData)) {
+          setData(fetchedData);
+        }
+      });
+  }, []);
+
   return (
     <div className="card" onClick={() => navigate('/impressions')} style={{ cursor: 'pointer' }}>
       <div className="card-title">Impressions</div>
       <ResponsiveContainer width="100%" height={250}>
         <BarChart data={data} barCategoryGap="25%">
-          <XAxis dataKey="name" />
+          <XAxis dataKey="platform" />
           <Tooltip content={<CustomTooltip />} />
-          <Bar dataKey={({ organic, paid }) => organic + paid}>
+          <Bar dataKey={(d) => d.organic + d.paid}>
             {data.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={colorMap[entry.name]} />
+              <Cell key={`cell-${index}`} fill={colorMap[entry.platform]} />
             ))}
           </Bar>
         </BarChart>

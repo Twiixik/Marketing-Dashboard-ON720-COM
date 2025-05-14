@@ -1,0 +1,617 @@
+{
+    "impressions": {
+      "Last 7 Days": {
+        "platformData": [
+          { "platform": "LinkedIn", "organic": 6200, "paid": 3200 },
+          { "platform": "Google", "organic": 4800, "paid": 2100 },
+          { "platform": "AppSource", "organic": 2900, "paid": 1200 }
+        ],
+        "campaignData": [
+          {
+            "campaign": "Spring Sale",
+            "platform": "LinkedIn",
+            "impressions": 5400,
+            "timerange": "Last 7 Days"
+          },
+          {
+            "campaign": "Launch Week",
+            "platform": "Google",
+            "impressions": 6900,
+            "timerange": "Last 7 Days"
+          },
+          {
+            "campaign": "Free Trial Push",
+            "platform": "AppSource",
+            "impressions": 3100,
+            "timerange": "Last 7 Days"
+          }
+        ]
+      },
+      "Last 30 Days": {
+        "platformData": [
+          { "platform": "LinkedIn", "organic": 19200, "paid": 11200 },
+          { "platform": "Google", "organic": 15400, "paid": 9800 },
+          { "platform": "AppSource", "organic": 9700, "paid": 6000 }
+        ],
+        "campaignData": [
+          {
+            "campaign": "Spring Sale",
+            "platform": "LinkedIn",
+            "impressions": 12200,
+            "timerange": "Last 30 Days"
+          },
+          {
+            "campaign": "Launch Week",
+            "platform": "Google",
+            "impressions": 17400,
+            "timerange": "Last 30 Days"
+          },
+          {
+            "campaign": "Free Trial Push",
+            "platform": "AppSource",
+            "impressions": 8400,
+            "timerange": "Last 30 Days"
+          }
+        ]
+      },
+      "Last 90 Days": {
+        "platformData": [
+          { "platform": "LinkedIn", "organic": 40200, "paid": 22400 },
+          { "platform": "Google", "organic": 32800, "paid": 19800 },
+          { "platform": "AppSource", "organic": 21300, "paid": 14000 }
+        ],
+        "campaignData": [
+          {
+            "campaign": "Spring Sale",
+            "platform": "LinkedIn",
+            "impressions": 26700,
+            "timerange": "Last 90 Days"
+          },
+          {
+            "campaign": "Launch Week",
+            "platform": "Google",
+            "impressions": 39800,
+            "timerange": "Last 90 Days"
+          },
+          {
+            "campaign": "Free Trial Push",
+            "platform": "AppSource",
+            "impressions": 18500,
+            "timerange": "Last 90 Days"
+          }
+        ]
+      }
+    },
+  
+    "websiteTraffic": {
+      "Last 7 Days": {
+        "visitsData": [
+          { "day": "Mon", "visits": 12 },
+          { "day": "Tue", "visits": 30 },
+          { "day": "Wed", "visits": 30 },
+          { "day": "Thu", "visits": 38 },
+          { "day": "Fri", "visits": 25 },
+          { "day": "Sat", "visits": 44 },
+          { "day": "Sun", "visits": 20 }
+        ],
+        "sourceData": [
+          { "name": "Organic", "value": 300 },
+          { "name": "Paid", "value": 210 },
+          { "name": "Referral", "value": 150 },
+          { "name": "Direct", "value": 100 },
+          { "name": "Social", "value": 290 }
+        ],
+        "pageTable": [
+          { "page": "/Pricing", "views": 458, "time": "4:58" },
+          { "page": "/Apps", "views": 588, "time": "4:58" },
+          { "page": "/Expense720", "views": 1085, "time": "4:58" }
+        ],
+        "uniqueVisitors": 1944,
+        "avgSession": "3min 44 sec"
+      },
+  
+      "Last 30 Days": {
+        "visitsData": [
+          { "day": "Week 1", "visits": 132 },
+          { "day": "Week 2", "visits": 190 },
+          { "day": "Week 3", "visits": 165 },
+          { "day": "Week 4", "visits": 207 }
+        ],
+        "sourceData": [
+          { "name": "Organic", "value": 1300 },
+          { "name": "Paid", "value": 1000 },
+          { "name": "Referral", "value": 800 },
+          { "name": "Direct", "value": 600 },
+          { "name": "Social", "value": 1200 }
+        ],
+        "pageTable": [
+          { "page": "/Pricing", "views": 1240, "time": "4:32" },
+          { "page": "/Apps", "views": 1580, "time": "4:10" },
+          { "page": "/Expense720", "views": 2421, "time": "5:02" }
+        ],
+        "uniqueVisitors": 6900,
+        "avgSession": "3min 48 sec"
+      },
+  
+      "Last 90 Days": {
+        "visitsData": [
+          { "day": "Jan", "visits": 230 },
+          { "day": "Feb", "visits": 290 },
+          { "day": "Mar", "visits": 320 }
+        ],
+        "sourceData": [
+          { "name": "Organic", "value": 3900 },
+          { "name": "Paid", "value": 3100 },
+          { "name": "Referral", "value": 1900 },
+          { "name": "Direct", "value": 1500 },
+          { "name": "Social", "value": 3400 }
+        ],
+        "pageTable": [
+          { "page": "/Pricing", "views": 3240, "time": "4:51" },
+          { "page": "/Apps", "views": 4290, "time": "4:37" },
+          { "page": "/Expense720", "views": 5851, "time": "5:15" }
+        ],
+        "uniqueVisitors": 19600,
+        "avgSession": "4min 01 sec"
+      }
+    },
+
+    "leadsGenerated": {
+        "Last 7 Days": {
+          "barData": [
+            { "platform": "LinkedIn", "organic": 150, "paid": 100 },
+            { "platform": "Google", "organic": 110, "paid": 60 },
+            { "platform": "AppSource", "organic": 70, "paid": 40 }
+          ],
+          "pieData": [
+            { "name": "Contact", "value": 120 },
+            { "name": "Book a Demo", "value": 100 },
+            { "name": "Webinar", "value": 90 },
+            { "name": "Trial", "value": 80 }
+          ],
+          "tableData": [
+            { "campaign": "Spring 2024", "type": "Webinar", "leads": 18, "conversion": "4.8%" },
+            { "campaign": "App Promo Week", "type": "Book a Demo", "leads": 14, "conversion": "3.7%" },
+            { "campaign": "Product Launch", "type": "Contact", "leads": 9, "conversion": "2.8%" }
+          ],
+          "topChannel": { "name": "Google ADS", "leads": 148 },
+          "topCampaign": { "name": "Spring 2024", "leads": 18 },
+          "totalLeads": 356
+        },
+      
+        "Last 30 Days": {
+          "barData": [
+            { "platform": "LinkedIn", "organic": 380, "paid": 270 },
+            { "platform": "Google", "organic": 290, "paid": 180 },
+            { "platform": "AppSource", "organic": 210, "paid": 150 }
+          ],
+          "pieData": [
+            { "name": "Contact", "value": 360 },
+            { "name": "Book a Demo", "value": 240 },
+            { "name": "Webinar", "value": 210 },
+            { "name": "Trial", "value": 180 }
+          ],
+          "tableData": [
+            { "campaign": "Spring 2024", "type": "Webinar", "leads": 54, "conversion": "5.1%" },
+            { "campaign": "App Promo Week", "type": "Book a Demo", "leads": 39, "conversion": "4.2%" },
+            { "campaign": "Product Launch", "type": "Contact", "leads": 28, "conversion": "3.0%" }
+          ],
+          "topChannel": { "name": "Google ADS", "leads": 470 },
+          "topCampaign": { "name": "Spring 2024", "leads": 54 },
+          "totalLeads": 990
+        },
+      
+        "Last 90 Days": {
+          "barData": [
+            { "platform": "LinkedIn", "organic": 880, "paid": 610 },
+            { "platform": "Google", "organic": 720, "paid": 520 },
+            { "platform": "AppSource", "organic": 510, "paid": 330 }
+          ],
+          "pieData": [
+            { "name": "Contact", "value": 880 },
+            { "name": "Book a Demo", "value": 640 },
+            { "name": "Webinar", "value": 550 },
+            { "name": "Trial", "value": 420 }
+          ],
+          "tableData": [
+            { "campaign": "Spring 2024", "type": "Webinar", "leads": 129, "conversion": "5.3%" },
+            { "campaign": "App Promo Week", "type": "Book a Demo", "leads": 111, "conversion": "4.6%" },
+            { "campaign": "Product Launch", "type": "Contact", "leads": 87, "conversion": "3.9%" }
+          ],
+          "topChannel": { "name": "Google ADS", "leads": 1240 },
+          "topCampaign": { "name": "Spring 2024", "leads": 129 },
+          "totalLeads": 2490
+        }
+      },
+
+"ctr": {
+  "Last 7 Days": {
+    "lineData": [
+      { "day": "Mon", "ctr": 1.8 },
+      { "day": "Tue", "ctr": 1.2 },
+      { "day": "Wed", "ctr": 2.5 },
+      { "day": "Thu", "ctr": 3.1 },
+      { "day": "Fri", "ctr": 2.7 },
+      { "day": "Sat", "ctr": 1.6 },
+      { "day": "Sun", "ctr": 0.9 }
+    ],
+    "barData": [
+      { "format": "Video", "ctr": 2.3 },
+      { "format": "Carousel", "ctr": 1.5 },
+      { "format": "Text", "ctr": 1.4 },
+      { "format": "Image", "ctr": 1.2 }
+    ],
+    "tableData": [
+      {
+        "campaign": "Spring 2024",
+        "platform": "LinkedIn Ads",
+        "format": "Video",
+        "ctr": "2.8%",
+        "impressions": "10,587",
+        "clicks": 378
+      },
+      {
+        "campaign": "App Promo Week",
+        "platform": "Google Ads",
+        "format": "Carousel",
+        "ctr": "1.8%",
+        "impressions": "8,026",
+        "clicks": 258
+      },
+      {
+        "campaign": "Product Launch",
+        "platform": "Bing Ads",
+        "format": "Text",
+        "ctr": "0.9%",
+        "impressions": "1,025",
+        "clicks": 148
+      }
+    ],
+    "platformSummary": [
+      { "platform": "Google Ads", "ctr": "3.8%" },
+      { "platform": "LinkedIn", "ctr": "2.8%" },
+      { "platform": "AppSource", "ctr": "1.3%" }
+    ],
+    "totalCTR": "3.8%"
+  },
+
+  "Last 30 Days": {
+    "lineData": [
+      { "day": "Week 1", "ctr": 1.6 },
+      { "day": "Week 2", "ctr": 2.4 },
+      { "day": "Week 3", "ctr": 3.0 },
+      { "day": "Week 4", "ctr": 2.6 }
+    ],
+    "barData": [
+      { "format": "Video", "ctr": 2.5 },
+      { "format": "Carousel", "ctr": 1.6 },
+      { "format": "Text", "ctr": 1.2 },
+      { "format": "Image", "ctr": 1.0 }
+    ],
+    "tableData": [
+      {
+        "campaign": "Spring 2024",
+        "platform": "LinkedIn Ads",
+        "format": "Video",
+        "ctr": "2.7%",
+        "impressions": "28,043",
+        "clicks": 759
+      },
+      {
+        "campaign": "App Promo Week",
+        "platform": "Google Ads",
+        "format": "Carousel",
+        "ctr": "2.1%",
+        "impressions": "18,720",
+        "clicks": 390
+      },
+      {
+        "campaign": "Product Launch",
+        "platform": "Bing Ads",
+        "format": "Text",
+        "ctr": "1.2%",
+        "impressions": "3,020",
+        "clicks": 157
+      }
+    ],
+    "platformSummary": [
+      { "platform": "Google Ads", "ctr": "3.2%" },
+      { "platform": "LinkedIn", "ctr": "2.7%" },
+      { "platform": "AppSource", "ctr": "1.5%" }
+    ],
+    "totalCTR": "3.2%"
+  },
+
+  "Last 90 Days": {
+    "lineData": [
+      { "day": "Jan", "ctr": 2.1 },
+      { "day": "Feb", "ctr": 2.8 },
+      { "day": "Mar", "ctr": 3.4 }
+    ],
+    "barData": [
+      { "format": "Video", "ctr": 2.9 },
+      { "format": "Carousel", "ctr": 1.8 },
+      { "format": "Text", "ctr": 1.5 },
+      { "format": "Image", "ctr": 1.3 }
+    ],
+    "tableData": [
+      {
+        "campaign": "Spring 2024",
+        "platform": "LinkedIn Ads",
+        "format": "Video",
+        "ctr": "3.1%",
+        "impressions": "48,102",
+        "clicks": 1240
+      },
+      {
+        "campaign": "App Promo Week",
+        "platform": "Google Ads",
+        "format": "Carousel",
+        "ctr": "2.4%",
+        "impressions": "33,890",
+        "clicks": 812
+      },
+      {
+        "campaign": "Product Launch",
+        "platform": "Bing Ads",
+        "format": "Text",
+        "ctr": "1.6%",
+        "impressions": "6,270",
+        "clicks": 307
+      }
+    ],
+    "platformSummary": [
+      { "platform": "Google Ads", "ctr": "3.9%" },
+      { "platform": "LinkedIn", "ctr": "3.1%" },
+      { "platform": "AppSource", "ctr": "1.8%" }
+    ],
+    "totalCTR": "3.9%"
+  }
+},
+
+"cpc": {
+  "Last 7 Days": {
+    "barData": [
+      { "platform": "LinkedIn", "cost": 18 },
+      { "platform": "Google", "cost": 14 },
+      { "platform": "AppSource", "cost": 7 }
+    ],
+    "tableData": [
+      {
+        "campaign": "Spring 2024",
+        "platform": "LinkedIn Ads",
+        "cpc": "18kr",
+        "spend": "300kr",
+        "click": "4.8%"
+      },
+      {
+        "campaign": "App Promo Week",
+        "platform": "Google Ads",
+        "cpc": "14kr",
+        "spend": "280kr",
+        "click": "3.7%"
+      },
+      {
+        "campaign": "Product Launch",
+        "platform": "Bing Ads",
+        "cpc": "9kr",
+        "spend": "110kr",
+        "click": "2.8%"
+      }
+    ],
+    "totalCPC": "14.50",
+    "totalSpend": "557kr"
+  },
+
+  "Last 30 Days": {
+    "barData": [
+      { "platform": "LinkedIn", "cost": 21 },
+      { "platform": "Google", "cost": 17 },
+      { "platform": "AppSource", "cost": 10 }
+    ],
+    "tableData": [
+      {
+        "campaign": "Spring 2024",
+        "platform": "LinkedIn Ads",
+        "cpc": "21kr",
+        "spend": "720kr",
+        "click": "5.1%"
+      },
+      {
+        "campaign": "App Promo Week",
+        "platform": "Google Ads",
+        "cpc": "17kr",
+        "spend": "640kr",
+        "click": "4.3%"
+      },
+      {
+        "campaign": "Product Launch",
+        "platform": "Bing Ads",
+        "cpc": "12kr",
+        "spend": "230kr",
+        "click": "3.3%"
+      }
+    ],
+    "totalCPC": "16.75",
+    "totalSpend": "1590kr"
+  },
+
+  "Last 90 Days": {
+    "barData": [
+      { "platform": "LinkedIn", "cost": 24 },
+      { "platform": "Google", "cost": 19 },
+      { "platform": "AppSource", "cost": 13 }
+    ],
+    "tableData": [
+      {
+        "campaign": "Spring 2024",
+        "platform": "LinkedIn Ads",
+        "cpc": "24kr",
+        "spend": "1100kr",
+        "click": "5.8%"
+      },
+      {
+        "campaign": "App Promo Week",
+        "platform": "Google Ads",
+        "cpc": "19kr",
+        "spend": "870kr",
+        "click": "4.9%"
+      },
+      {
+        "campaign": "Product Launch",
+        "platform": "Bing Ads",
+        "cpc": "15kr",
+        "spend": "380kr",
+        "click": "3.9%"
+      }
+    ],
+    "totalCPC": "18.90",
+    "totalSpend": "2350kr"
+  }
+},
+"conversions": {
+  "Last 7 Days": {
+    "trendData": [
+      { "day": "Mon", "value": 28 },
+      { "day": "Tue", "value": 36 },
+      { "day": "Wed", "value": 55 },
+      { "day": "Thu", "value": 30 },
+      { "day": "Fri", "value": 62 },
+      { "day": "Sat", "value": 25 },
+      { "day": "Sun", "value": 47 }
+    ],
+    "barData": [
+      { "platform": "LinkedIn", "value": 55 },
+      { "platform": "Google", "value": 48 },
+      { "platform": "AppSource", "value": 40 }
+    ],
+    "tableData": [
+      {
+        "campaign": "Spring 2024",
+        "platform": "LinkedIn Ads",
+        "type": "Demo",
+        "conversions": 87,
+        "rate": "3.7%"
+      },
+      {
+        "campaign": "App Promo Week",
+        "platform": "Google Ads",
+        "type": "Installs",
+        "conversions": 136,
+        "rate": "4.8%"
+      },
+      {
+        "campaign": "Product Launch",
+        "platform": "Bing Ads",
+        "type": "Trials",
+        "conversions": 77,
+        "rate": "2.8%"
+      }
+    ],
+    "summary": {
+      "demoBookings": 117,
+      "webinarSignups": 82,
+      "total": 326
+    },
+    "donutData": [
+      { "name": "App Installs", "value": 120 },
+      { "name": "Trial Signups", "value": 65 },
+      { "name": "Demo Booking", "value": 52 }
+    ]
+  },
+
+  "Last 30 Days": {
+    "trendData": [
+      { "day": "Week 1", "value": 128 },
+      { "day": "Week 2", "value": 144 },
+      { "day": "Week 3", "value": 165 },
+      { "day": "Week 4", "value": 187 }
+    ],
+    "barData": [
+      { "platform": "LinkedIn", "value": 168 },
+      { "platform": "Google", "value": 156 },
+      { "platform": "AppSource", "value": 112 }
+    ],
+    "tableData": [
+      {
+        "campaign": "Spring 2024",
+        "platform": "LinkedIn Ads",
+        "type": "Demo",
+        "conversions": 204,
+        "rate": "4.1%"
+      },
+      {
+        "campaign": "App Promo Week",
+        "platform": "Google Ads",
+        "type": "Installs",
+        "conversions": 265,
+        "rate": "5.2%"
+      },
+      {
+        "campaign": "Product Launch",
+        "platform": "Bing Ads",
+        "type": "Trials",
+        "conversions": 139,
+        "rate": "3.4%"
+      }
+    ],
+    "summary": {
+      "demoBookings": 291,
+      "webinarSignups": 184,
+      "total": 520
+    },
+    "donutData": [
+      { "name": "App Installs", "value": 280 },
+      { "name": "Trial Signups", "value": 130 },
+      { "name": "Demo Booking", "value": 110 }
+    ]
+  },
+
+  "Last 90 Days": {
+    "trendData": [
+      { "day": "Jan", "value": 188 },
+      { "day": "Feb", "value": 204 },
+      { "day": "Mar", "value": 232 }
+    ],
+    "barData": [
+      { "platform": "LinkedIn", "value": 276 },
+      { "platform": "Google", "value": 248 },
+      { "platform": "AppSource", "value": 180 }
+    ],
+    "tableData": [
+      {
+        "campaign": "Spring 2024",
+        "platform": "LinkedIn Ads",
+        "type": "Demo",
+        "conversions": 310,
+        "rate": "4.3%"
+      },
+      {
+        "campaign": "App Promo Week",
+        "platform": "Google Ads",
+        "type": "Installs",
+        "conversions": 385,
+        "rate": "5.5%"
+      },
+      {
+        "campaign": "Product Launch",
+        "platform": "Bing Ads",
+        "type": "Trials",
+        "conversions": 241,
+        "rate": "3.8%"
+      }
+    ],
+    "summary": {
+      "demoBookings": 440,
+      "webinarSignups": 250,
+      "total": 716
+    },
+    "donutData": [
+      { "name": "App Installs", "value": 420 },
+      { "name": "Trial Signups", "value": 185 },
+      { "name": "Demo Booking", "value": 145 }
+    ]
+  }
+}
+}
+  
